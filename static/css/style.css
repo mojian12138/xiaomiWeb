@@ -1,0 +1,326 @@
+:root {
+    --bg-color: #000000;
+    --card-bg: #111111;
+    --input-bg: #1a1a1a;
+    --text-color: #ffffff;
+    --text-muted: #888888;
+    --border-color: #333333;
+    --accent-color: #ffffff;
+    --success-color: #28a745;
+    --button-bg: #ffffff;
+    --button-text: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 560px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-muted);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    user-select: none;
+}
+
+.tab.active {
+    background-color: #2c2c2c;
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#updateSection {
+    min-height: 640px;
+}
+
+#aboutSection {
+    height: 640px;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.title-section h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-section p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.status-badge {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--success-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.slider-container {
+    margin-bottom: 30px;
+    padding: 0 5px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #111;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #111;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.result-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.result-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.result-error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.fa-spin {
+    animation: fa-spin 1s infinite linear;
+}
+
+@keyframes fa-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.about-content {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.about-content h3 {
+    color: var(--text-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.about-content p,
+.about-content ul,
+.about-content ol {
+    margin-bottom: 14px;
+}
+
+.about-content ul,
+.about-content ol {
+    padding-left: 22px;
+}
+
+.about-content li {
+    margin-bottom: 8px;
+}
+
+.highlight-box {
+    background-color: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 8px 0 18px;
+}
+
+.metric-card {
+    background-color: var(--input-bg);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.metric-icon {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.metric-value {
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.important-note {
+    color: #ff4d4f;
+    font-weight: 700;
+}
+
+.disclaimer {
+    font-size: 14px;
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
