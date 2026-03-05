@@ -80,11 +80,24 @@ http://127.0.0.1:12303
 
 在宝塔创建站点（如 `step.yourdomain.com`）后，进入该站点的 Nginx 配置，设置反代到 Flask 端口。
 
-示例配置：
+根路径反代示例：
 
 ```nginx
 location / {
     proxy_pass http://127.0.0.1:12303;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+如果你要挂在子路径（如 `/bushu/`），请使用：
+
+```nginx
+location /bushu/ {
+    proxy_pass http://127.0.0.1:12303/;
     proxy_http_version 1.1;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;

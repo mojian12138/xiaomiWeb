@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const apiBasePath = `${window.location.pathname.replace(/\/?$/, '/')}`;
     const form = document.getElementById('stepForm');
     const stepsInput = document.getElementById('steps');
     const stepSlider = document.getElementById('stepSlider');
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultMessage.style.display = 'none';
 
         try {
-            const response = await fetch('/api/update', {
+            const response = await fetch(`${apiBasePath}api/update`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -71,6 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
 
+            const contentType = response.headers.get('content-type') || '';
+            if (!contentType.includes('application/json')) {
+                const text = await response.text();
+                throw new Error(`接口返回非JSON: ${text.slice(0, 80)}`);
+            }
             const data = await response.json();
 
             if (data.success) {
